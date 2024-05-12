@@ -1,0 +1,39 @@
+GET http://localhost:3000/fifa
+
+### GET
+
+GET http://localhost:3000/fifa/664103c7c958f53b516ab991
+
+### 
+POST http://localhost:3000/fifa/create-match
+content-type: application/json
+
+{
+    "home_team": {
+       "name": "Ceri",
+       "team": "Liverpool"
+    },
+    "away_team": {
+        "name": "Dylan",
+        "team": "Arsenal"
+    }
+}
+
+
+###
+DELETE http://localhost:3000/fifa/delete-all-matches
+
+
+### PUT
+PUT http://localhost:3000/fifa/update-match/66412631258583135ff93a1d
+content-type: application/json
+
+{
+    "away": {
+        "goals": 2
+    },
+    "home": {
+        "goals": 1
+    }
+}
+
