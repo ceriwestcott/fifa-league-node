@@ -50,8 +50,8 @@ export const deleteAllMatches = async (req: Request, res: Response) => {
 };
 
 export const updateMatch = async (req: Request, res: Response) => {
-  console.log("Update Match");
-  console.log(req.params.id);
+  
+  
   try {
     const data = await Match.findOneAndUpdate(
       { _id: req.params.id },
