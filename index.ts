@@ -36,7 +36,7 @@ mongoose.connect(mongoString);
 const database = mongoose.connection;
 
 database.on("error", (error: Error) => {
-  console.log(error);
+  
 });
 
 database.once("connected", () => {
