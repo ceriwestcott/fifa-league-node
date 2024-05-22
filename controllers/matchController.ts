@@ -1,22 +1,23 @@
 import { Request, Response } from "express";
 import { Match } from "../model/models";
+import { responseHandler } from "../util/response/responseHandler";
 
 //GET
 export const getAllMatches = async (req: Request, res: Response) => {
   try {
     const data = await Match.find();
-    res.status(201).json(data);
+    responseHandler(res, data, 201);
   } catch (error: any) {
-    res.status(400).json({ message: error.message });
+    responseHandler(res, undefined, 400);
   }
 };
 
 export const getMatchById = async (req: Request, res: Response) => {
   try {
     const data = await Match.findById(req.params.id);
-    res.status(201).json(data);
+    responseHandler(res, data, 201);
   } catch (error: any) {
-    res.status(400).json({ message: error.message });
+    responseHandler(res, undefined, 400);
   }
 };
 
@@ -34,24 +35,22 @@ export const createMatch = async (req: Request, res: Response) => {
   });
   try {
     const dataToSave = await data.save();
-    res.status(201).json(dataToSave);
+    responseHandler(res, dataToSave, 201);
   } catch (error: any) {
-    res.status(400).json({ message: error.message });
+    responseHandler(res, undefined, 400);
   }
 };
 
 export const deleteAllMatches = async (req: Request, res: Response) => {
   try {
     const data = await Match.deleteMany({});
-    res.status(201).json(data);
+    responseHandler(res, data, 201);
   } catch (error: any) {
-    res.status(400).json({ message: error.message });
+    responseHandler(res, undefined, 400);
   }
 };
 
 export const updateMatch = async (req: Request, res: Response) => {
-  
-  
   try {
     const data = await Match.findOneAndUpdate(
       { _id: req.params.id },
@@ -64,8 +63,26 @@ export const updateMatch = async (req: Request, res: Response) => {
       },
       { new: true }
     );
-    res.status(201).json(data);
+    responseHandler(res, data, 201);
   } catch (error: any) {
-    res.status(400).json({ message: error.message });
+    responseHandler(res, undefined, 400);
+  }
+};
+
+export const getLastMatch = async (req: Request, res: Response) => {
+  try {
+    const data = await Match.findOne().sort({ _id: -1 });
+    responseHandler(res, data, 201);
+  } catch (error: any) {
+    responseHandler(res, undefined, 400);
+  }
+};
+
+export const getBiggestWin = async (req: Request, res: Response) => {
+  try {
+    const data = await Match.find().sort({ "home.goals": -1 });
+    responseHandler(res, data, 201);
+  } catch (error: any) {
+    responseHandler(res, undefined, 400);
   }
 };

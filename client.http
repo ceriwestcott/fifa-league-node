@@ -5,6 +5,13 @@ GET http://localhost:3000/fifa
 GET http://localhost:3000/fifa/664103c7c958f53b516ab991
 
 ### 
+GET http://localhost:3000/fifa/lastMatch
+
+###
+GET http://localhost:3000/fifa/test-token
+Authorization: Bearer 
+
+### 
 POST http://localhost:3000/fifa/create-match
 content-type: application/json
 
@@ -17,6 +24,14 @@ content-type: application/json
         "name": "Dylan",
         "team": "Arsenal"
     }
+}
+
+###
+POST http://localhost:3000/iam/generate-token
+content-type: application/json
+
+{
+    "username": "layla-my-lover"
 }
 
 
