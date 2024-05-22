@@ -37,3 +37,10 @@ content-type: application/json
     }
 }
 
+
+### Players
+POST http://localhost:3000/fifa/create-player
+content-type: application/json
+
+{
+    "name": "Ceri"}

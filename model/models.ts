@@ -1,5 +1,12 @@
 import mongoose, { Schema } from "mongoose";
 
+const playerSchema = new Schema({
+  name: {
+    type: String,
+    required: true,
+  },
+});
+
 const matchSchema = new Schema({
   home: {
     name: {
@@ -39,4 +46,5 @@ const matchSchema = new Schema({
 });
 
 const Match = mongoose.model("Match", matchSchema);
-export { Match };
+const Player = mongoose.model("Player", playerSchema);
+export { Match, Player };
