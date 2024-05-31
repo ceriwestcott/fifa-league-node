@@ -1,5 +1,4 @@
 import { Router } from "express";
-import { authenticateToken } from "../controllers/jwtController";
 import {
   getLastMatch,
   getAllMatches,

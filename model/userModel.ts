@@ -33,7 +33,7 @@ const UserSchema = new Schema<UserDocument>({
 });
 
 UserSchema.methods.comparePassword = async function (password: string) {
-  return bcrypt.compareSync(password, this.hash_password || "");
+  return await bcrypt.compare(password, this.hash_password || "");
 };
 
 const User = mongoose.model("User", UserSchema);

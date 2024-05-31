@@ -46,15 +46,3 @@ export const signIn = async (req: Request, res: Response) => {
     res.status(400).json({ message: error.message });
   }
 };
-
-export const profile = async (req: Request, res: Response) => {
-  return res.json(req.user);
-};
-
-export const loginRequired = async (req: Request, res: Response, next: any) => {
-  if (req.user) {
-    next();
-  } else {
-    return res.status(401).json({ message: "Unauthorized user!" });
-  }
-};
