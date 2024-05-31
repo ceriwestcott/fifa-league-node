@@ -8,8 +8,8 @@ import {
 
 const getRouter = Router();
 
-getRouter.get("/lastMatch", authenticateToken, getLastMatch);
-getRouter.get("/", authenticateToken, getAllMatches);
-getRouter.get("/:id", authenticateToken, getMatchById);
+getRouter.get("/lastMatch", getLastMatch);
+getRouter.get("/", getAllMatches);
+getRouter.get("/:id", getMatchById);
 
 export default getRouter;

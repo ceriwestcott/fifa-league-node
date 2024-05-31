@@ -1,18 +1,19 @@
-GET http://localhost:3000/fifa
+GET http://localhost:3000/get/fifa
 
 ### GET
 
 GET http://localhost:3000/fifa/664103c7c958f53b516ab991
 
 ### 
-GET http://localhost:3000/fifa/lastMatch
+GET http://localhost:3000/get/lastMatch
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImxheWxhQGdtYWlsLmNvbSIsImZ1bGxOYW1lIjoiTGF5bGEgbXkgbG92ZXIiLCJfaWQiOiI2NjU5ZWE5ZTVkNzYwMWQzNDYxNTI2NjgiLCJpYXQiOjE3MTcxNjg4MTF9.TUVFVFNrjSYF00v5LCe43W2s8Oppj-caTNwHKCjNEzg
 
 ###
-GET http://localhost:3000/fifa/test-token
-Authorization: Bearer 
+GET http://localhost:3000/get/test-token
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InRlc3QyQHRlc3QuY29tIiwiZnVsbE5hbWUiOiJjZXJpIG15IGxvdmVyIiwiX2lkIjoiNjY1OWUxOTZjMDlhNGU0ZjY5MGZiN2M2IiwiaWF0IjoxNzE3MTY2NTA2fQ.OlnXbVi8b8hzN1boz9SUl-0vMSdpNqwr-sofvFO77fA
 
 ### 
-POST http://localhost:3000/fifa/create-match
+POST http://localhost:3000/post/create-match
 content-type: application/json
 
 {
@@ -27,13 +28,28 @@ content-type: application/json
 }
 
 ###
-POST http://localhost:3000/iam/generate-token
+POST http://localhost:3000/iam/register
 content-type: application/json
 
 {
-    "username": "layla-my-lover"
+    "fullName": "Layla my lover",
+    "email": "layla@gmail.com",
+    "password": "password"
 }
 
+###
+POST http://localhost:3000/iam/login
+content-type: application/json
+
+{
+    "email": "layla@gmail.com",
+    "password": "password"
+}
+
+
+###
+GET  http://localhost:3000/iam/profile
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InRlc3QyQHRlc3QuY29tIiwiZnVsbE5hbWUiOiJjZXJpIG15IGxvdmVyIiwiX2lkIjoiNjY1OWUxOTZjMDlhNGU0ZjY5MGZiN2M2IiwiaWF0IjoxNzE3MTY4NzQ2fQ.0WqRxTA1hQW4LEh4nPp_nz_i1SAzw-xAJh3W97gOH60
 
 ###
 DELETE http://localhost:3000/fifa/delete-all-matches

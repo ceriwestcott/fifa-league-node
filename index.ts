@@ -1,10 +1,11 @@
 import express, { Express, Request, Response } from "express";
 import dotenv from "dotenv";
 import bodyParser from "body-parser";
-import jwtRouter from "./routes/jwt-routes";
+import jwtRouter from "./routes/iam-routes";
 import getRoutes from "./routes/getRoutes";
 import deleteRoutes from "./routes/deleteRoutes";
 import postRoutes from "./routes/postRoutes";
+import { authenticateToken } from "./controllers/jwtController";
 dotenv.config();
 
 const app: Express = express();
@@ -25,9 +26,9 @@ database.once("connected", () => {
 });
 
 app.use(bodyParser.json());
-app.use("/get", getRoutes);
-app.use("/delete", deleteRoutes);
-app.use("/post", postRoutes);
+app.use("/get", authenticateToken, getRoutes);
+app.use("/delete", authenticateToken, deleteRoutes);
+app.use("/post", authenticateToken, postRoutes);
 app.use("/iam", jwtRouter);
 
 app.listen(port, () => {
